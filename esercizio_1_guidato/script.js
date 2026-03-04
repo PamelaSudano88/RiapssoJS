@@ -919,14 +919,14 @@ aggiungi.addEventListener("click", () => {
     }
     let pizza = { nome: "Vegetariana", ingredienti: "pomodoro, mozzarella, zucchine, melanzane, peperoni", prezzo: 12.00, categoria: "Speciale" }
     menu.push(pizza)
-    for (let pizze of menu) {
+
         let li = document.createElement("li")
         li.innerHTML = '<div class="info-pizza">' +
-            '  <span class="nome-pizza">' + pizze.nome + '</span>' +
-            '  <span class="dettagli-pizza"> | ' + pizze.ingredienti + ' | €' + pizze.prezzo + '</span>' +
+            '  <span class="nome-pizza">' + nome + '</span>' +
+            '  <span class="dettagli-pizza"> | ' + ingredienti + ' | €' + prezzo + '</span>' +
             '</div>'
         listaPizze.appendChild(li)
-    }
+    
     nome.value = ""
     ingredienti = ""
     prezzo = ""
@@ -971,7 +971,7 @@ ricerca.addEventListener("input", (e) => {
     });
     listaPizze.innerHTML = ""
     for (let dati of risultati) {
-        let li = document.querySelector("li")
+        let li = document.createElement("li")
         li.innerHTML = '<div class="info-pizza">' +
             '  <span class="nome-pizza">' + dati.nome + '</span>' +
             '  <span class="dettagli-pizza"> | ' + dati.ingredienti + ' | €' + dati.prezzo + '</span>' +
