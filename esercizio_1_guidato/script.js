@@ -63,7 +63,14 @@ console.log("Tipo di esempioPrezzo:", typeof esempioPrezzo);         // → "num
 // Poi stampa tutte e 4 con console.log()
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 1.1)
-
+const nomePizzeria = "La Pizza del Codice"
+const maxPizze = 15
+let pizzeInMenu = 0
+let pizzeriaAperta = true
+console.log(nomePizzeria)
+console.log(maxPizze)
+console.log(pizzeInMenu)
+console.log(pizzeriaAperta)
 
 
 // ✅ VERIFICA: Apri la console (F12). Dovresti vedere:
@@ -79,8 +86,10 @@ console.log("Tipo di esempioPrezzo:", typeof esempioPrezzo);         // → "num
 // Usa questo formato: console.log("Tipo di nomePizzeria:", typeof nomePizzeria);
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 1.2)
-
-
+console.log("Tipo di nomePizzeria:", typeof nomePizzeria)
+console.log("Tipo di maxPizze:", typeof maxPizze)
+console.log("Tipo di pizzeInMenu:", typeof pizzeInMenu)
+console.log("Tipo di pizzeriaAperta:", typeof pizzeriaAperta)
 
 // ✅ VERIFICA: Dovresti vedere in console:
 // "Tipo di nomePizzeria: string"
@@ -138,7 +147,12 @@ console.log("Posso preparare:", possoPreparare);
 // 5. Stampa prezzoFinale e postiDisponibili
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 2.1)
-
+const prezzoBase = 8.50
+const ricarico = 1.3
+const prezzoFinale = prezzoBase * ricarico
+const postiDisponibili = maxPizze - pizzeInMenu
+console.log(prezzoFinale)
+console.log(postiDisponibili)
 
 
 // ✅ VERIFICA: In console dovresti vedere:
@@ -155,7 +169,14 @@ console.log("Posso preparare:", possoPreparare);
 // 5. Stampa tutti e 4 i valori
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 2.2)
-
+const èConveniente = (prezzoFinale < 15)
+const haPostiMenu = (postiDisponibili > 0)
+const puòAggiungere = true
+const menuPieno = false
+console.log(èConveniente)
+console.log(haPostiMenu)
+console.log(puòAggiungere)
+console.log(menuPieno)
 
 
 // ✅ VERIFICA:
@@ -216,7 +237,11 @@ if (prezzoPizzaEsempio >= 18) {
 //   → stampa "❌ Pizza rifiutata: dati incompleti"
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 3.1)
-
+let prezzoCandidata = 9.50
+let categoriaCandidata = "Speciale"
+if (prezzoCandidata > 0 && categoriaCandidata !== "") {
+    console.log("✅ Pizza accettata nel menu!")
+} else { console.log("❌ Pizza rifiutata: dati incompleti") }
 
 
 // ✅ VERIFICA: Dovresti vedere "✅ Pizza accettata nel menu!" (9.50 > 0 e "Speciale" !== "")
@@ -237,7 +262,18 @@ if (prezzoPizzaEsempio >= 18) {
 // Dopo tutti gli if, stampa: console.log("Fascia di prezzo:", fascia)
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 3.2)
-
+let prezzo = 14
+let fascia = ""
+if (prezzo >= 18) {
+    fascia = "Premium"
+} else if (prezzo >= 13) {
+    fascia = "Gourmet"
+} else if (prezzo >= 8) {
+    fascia = "Media"
+} else if (prezzo >= 5) {
+    fascia = "Economica"
+} else { fascia = "Budget" }
+console.log("Fascia di prezzo:", fascia)
 
 
 // ✅ VERIFICA: Dovresti vedere "Fascia di prezzo: Gourmet" (14 >= 13)
@@ -257,7 +293,18 @@ if (prezzoPizzaEsempio >= 18) {
 // RICORDA: metti break; dopo ogni case!
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 3.3)
-
+let categoria = "Gourmet"
+switch (categoria) {
+    case "Classica": console.log("🍕 Le pizze della tradizione");
+        break;
+    case "Speciale": console.log("⭐ Creazioni dello chef");
+        break;
+    case "Gourmet": console.log("🏆 Ingredienti ricercati e di alta qualità");
+        break;
+    case "Stagionale": console.log("🌿 Ingredienti freschi di stagione");
+        break;
+    default: console.log("❓ Categoria sconosciuta")
+}
 
 
 // ✅ VERIFICA: Dovresti vedere "🏆 Ingredienti ricercati e di alta qualità"
@@ -321,7 +368,11 @@ console.log("Somma prezzi:", sommaPrezzi); // → 47
 // 4. ⚠️ NON dimenticare di incrementare: tavolo++;
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 4.1)
-
+let tavolo = 1
+while (tavolo <= 4) {
+    console.log("tavolo " + tavolo + " pronto")
+    tavolo++
+}
 
 
 // ✅ VERIFICA: 4 righe in console "Tavolo 1 pronto" ... "Tavolo 4 pronto"
@@ -340,8 +391,13 @@ console.log("Somma prezzi:", sommaPrezzi); // → 47
 const prezziMenu = [5, 12, 8, 18, 6, 15, 9, 22];
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 4.2)
-
-
+let pizzeCostose = 0
+for (let i = 0; i >= 10; i++) {
+    if (prezziMenu[i] >= 10) {
+        pizzeCostose++
+    }
+}
+console.log(pizzeCostose)
 
 // ✅ VERIFICA: pizzeCostose → 4 (le pizze da 12, 18, 15, 22)
 
@@ -409,6 +465,16 @@ presentaPizza("Capricciosa", 7);  // → "Capricciosa — Costo: €7 → Vendit
 //   console.log(calcolaFascia(4));    // → "Budget"
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 5.1)
+function calcolaFascia(prezzo) {
+    if (prezzo >= 18) { return fascia = "Premium" }
+    else if (prezzo >= 13) { return fascia = "Gourmet" }
+    else if (prezzo >= 8) { return fascia = "Media" }
+    else if (prezzo >= 5) { return fascia = "Economica" }
+    else return fascia = "Budget"
+}
+console.log(calcolaFascia(20));
+console.log(calcolaFascia(10));
+console.log(calcolaFascia(4));
 
 
 
@@ -427,8 +493,11 @@ presentaPizza("Capricciosa", 7);  // → "Capricciosa — Costo: €7 → Vendit
 //   console.log(creaDescrizione("Margherita", "Pomodoro, mozzarella", 8));
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 5.2)
-
-
+function creaDescrizione(nome, ingredienti, prezzo) {
+    calcolaFascia(prezzo)
+    return "🍕 " + esempioNomePizza + "  — Ingredienti: " + ingredienti + " |  Prezzo: €" + esempioPrezzo + " | Fascia: " + fascia
+}
+console.log(creaDescrizione("Margherita", "Pomodoro, mozzarella", 8))
 
 // ✅ VERIFICA: "🍕 Margherita — Ingredienti: Pomodoro, mozzarella | Prezzo: €8 | Fascia: Media"
 
@@ -484,8 +553,12 @@ for (const pizza of pizzeEsempio) {
 // 6. Stampa l'array completo
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 6.1)
-
-
+let nomiPizze = ["Napoli", "Americana", "Vegetariana"]
+nomiPizze.push("Mare e monti")
+console.log(nomiPizze.length)
+console.log(nomiPizze[1])
+nomiPizze.pop()
+console.log(nomiPizze)
 
 // ✅ VERIFICA: L'array finale ha 3 elementi (dopo il pop)
 
@@ -504,9 +577,11 @@ for (const pizza of pizzeEsempio) {
 // 3. Stampa nomiMaiuscoli
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 6.2)
-
-
-
+for (let pizze of nomiPizze) {
+    console.log("🍕 " + pizze + " è nel menu!")
+}
+let nomiMaiuscoli = nomiPizze.map((nome) => { return nome.toUpperCase() })
+console.log(nomiMaiuscoli)
 // ✅ VERIFICA: Vedi le 3 pizze con "🍕" e poi l'array in maiuscolo
 
 
@@ -575,8 +650,16 @@ console.log(nomeEstratto, prezzoEstratto);         // → "Napoletana" 9.5
 // 4. Stampa l'oggetto completo: console.log(miaPizza)
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 7.1)
-
-
+let miaPizza = {
+    nome: "Napoli",
+    ingredienti: "Pomodoro, Mozzarella di bufala, Basilico",
+    prezzo: 10.50,
+    disponibile: true,
+}
+console.log(miaPizza.nome)
+console.log(miaPizza.prezzo)
+miaPizza.fascia = calcolaFascia(miaPizza.prezzo)
+console.log(miaPizza)
 
 // ✅ VERIFICA: L'oggetto ha 5 proprietà (nome, ingredienti, prezzo, disponibile, fascia)
 
@@ -600,8 +683,15 @@ console.log(nomeEstratto, prezzoEstratto);         // → "Napoletana" 9.5
 //    }
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 7.2)
-
-
+const menu = [
+    { nome: "Margherita", ingredienti: "Pomodoro, mozzarella", prezzo: 7 },
+    { nome: "Diavola", ingredienti: "Pomodoro, mozzarella, salame piccante", prezzo: 9 },
+    { nome: "Tartufo", ingredienti: "Crema di tartufo, mozzarella, funghi", prezzo: 16 }
+];
+for (let pizza of menu) {
+    const { nome, prezzo } = pizza;
+    console.log(nome + " — €" + prezzo);
+}
 
 // ✅ VERIFICA: Vedi 3 righe tipo "Margherita — €7"
 
@@ -658,7 +748,10 @@ console.log("Titolo attuale:", titoloEl.textContent); // → "Il Nostro Menu"
 //    in "#d35400" usando: elemento.style.color = "#d35400";
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 8.1)
-
+titoloEl.textContent = "🍕 " + nomePizzeria
+let totale = document.querySelector("#stat-totale")
+totale.textContent = menu.length
+totale.style.color = "#d35400"
 
 
 // ✅ VERIFICA: Il titolo nella pagina è cambiato e il numero di pizze è visibile
@@ -680,9 +773,16 @@ console.log("Titolo attuale:", titoloEl.textContent); // → "Il Nostro Menu"
 //    Aggiungi anche la classe "msg-successo": elemento.classList.add("msg-successo")
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 8.2)
-
-
-
+let inputNome = document.querySelector("#input-nome")
+let valoreNome = inputNome.value
+let inputPrezzo = document.querySelector("#input-prezzo")
+let valorePrezzo = Number(inputPrezzo.value) // parseFloat(inputprezzo.value)
+console.log(valoreNome)
+console.log(valorePrezzo)
+let div = document.querySelector("#messaggio")
+div.textContent = "Benvenuto nella Pizzeria!"
+div.style.display = "block"
+div.classList.add("msg-successo")
 // ✅ VERIFICA: Un messaggio verde "Benvenuto nella Pizzeria!" appare nella pagina
 
 
@@ -756,7 +856,14 @@ const listaPizze = document.querySelector("#lista-pizze");
 //    c. Aggiungi il <li> alla lista con: lista.appendChild(li)
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 9.1)
-
+for (let pizza of menu) {
+    let li = document.createElement("li")
+    li.innerHTML = '<div class="info-pizza">' +
+        '  <span class="nome-pizza">' + pizza.nome + '</span>' +
+        '  <span class="dettagli-pizza"> | ' + pizza.ingredienti + ' | €' + pizza.prezzo + '</span>' +
+        '</div>'
+    listaPizze.appendChild(li)
+}
 
 
 // ✅ VERIFICA: Le 3 pizze del menu appaiono nella pagina!
@@ -795,7 +902,37 @@ const listaPizze = document.querySelector("#lista-pizze");
 // Suggerimento: tutto il codice dei punti a-j va DENTRO la function() del click
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 9.2)
+let aggiungi = document.querySelector("#btn-aggiungi")
+aggiungi.addEventListener("click", () => {
+    let nome = document.querySelector("#input-nome")
+    let ingredienti = document.querySelector("#input-ingredienti")
+    let prezzo = document.querySelector("#input-prezzo")
+    let categoria = document.querySelector("#select-categoria")
+    nome = nome.value
+    ingredienti = ingredienti.value
+    prezzo = Number(prezzo.value)
+    categoria = categoria.value
 
+    if (nome.value === "") {
+        alert("Inserisci un nome!");
+        return;
+    }
+    let pizza = { nome: "Vegetariana", ingredienti: "pomodoro, mozzarella, zucchine, melanzane, peperoni", prezzo: 12.00, categoria: "Speciale" }
+    menu.push(pizza)
+    for (let pizze of menu) {
+        let li = document.createElement("li")
+        li.innerHTML = '<div class="info-pizza">' +
+            '  <span class="nome-pizza">' + pizze.nome + '</span>' +
+            '  <span class="dettagli-pizza"> | ' + pizze.ingredienti + ' | €' + pizze.prezzo + '</span>' +
+            '</div>'
+        listaPizze.appendChild(li)
+    }
+    nome.value = ""
+    ingredienti = ""
+    prezzo = ""
+    let statistica = document.querySelector("#stat-totale")
+    statistica.textContent = menu.length
+})
 
 
 // ✅ VERIFICA: Compila il form, clicca "Aggiungi Pizza" → la pizza appare nella lista!
@@ -826,7 +963,22 @@ const listaPizze = document.querySelector("#lista-pizze");
 // Poi usa un for...of su "risultati" per ricreare gli <li> (come Step 9.1)
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 9.3)
-
+let ricerca = document.querySelector("#input-ricerca")
+ricerca.addEventListener("input", (e) => {
+    let testo = e.target.value.toLowerCase()
+    const risultati = menu.filter(function (pizza) {
+        return pizza.nome.toLowerCase().includes(testo);
+    });
+    listaPizze.innerHTML = ""
+    for (let dati of risultati) {
+        let li = document.querySelector("li")
+        li.innerHTML = '<div class="info-pizza">' +
+            '  <span class="nome-pizza">' + dati.nome + '</span>' +
+            '  <span class="dettagli-pizza"> | ' + dati.ingredienti + ' | €' + dati.prezzo + '</span>' +
+            '</div>'
+        listaPizze.append(li)
+    }
+})
 
 
 // ✅ VERIFICA: Scrivi nel campo ricerca → la lista si filtra in tempo reale!
@@ -892,8 +1044,13 @@ console.log(descrizionePizza);
 //    console.log(pulisciNome("diavola"));           // → "Diavola"
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 10.1)
-
-
+function pulisciNome(nome) {
+    let nomePulito = nome.trim()
+    nomePulito = nomePulito.charAt(0).toUpperCase()
+    return nomePulito = nomePulito.slice(1).toLowerCase()
+}
+console.log(pulisciNome("  mARGHERITA  "));   // → "Margherita"
+console.log(pulisciNome("diavola"));  // → "Diavola"
 
 // ✅ VERIFICA: "Margherita" e "Diavola"
 
@@ -928,9 +1085,29 @@ console.log(descrizionePizza);
 //    Seleziona "#stat-piu-cara" e metti stats.piuCara come textContent
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 10.2)
-
-
-
+function calcolaStatistiche(menu) {
+    let ogg = {}
+    ogg.totale = menu.length
+    ogg.sommaPrezzi = 0
+    for (let prezzo of menu) {
+        return sommaPrezzi = + prezzo.prezzo
+    }
+    ogg.media = ((sommaPrezzi / totale).toFixed(2))
+    ogg.piuCara = 0
+    let nomePiuCara = "";
+    for (const pizza of menu) {
+        if (pizza.prezzo > ogg.piuCara) {
+            ogg.piuCara = pizza.prezzo;
+            nomePiuCara = pizza.nome;
+        }
+    }
+}
+const stats = calcolaStatistiche(menu)
+console.log(`📊 Menu: ${stats.totale} pizze | Media: €${stats.media} | Più cara: ${stats.piuCara}`);
+let mediaS = document.querySelector("#stat-media")
+mediaS.textContent = stats.media + " €"
+let piuCaraS = document.querySelector("#stat-piu-cara")
+piuCaraS.textContent = stats.piuCara
 // ✅ VERIFICA: Le statistiche nella pagina si aggiornano!
 
 
