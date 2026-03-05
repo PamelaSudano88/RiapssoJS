@@ -683,7 +683,7 @@ console.log(miaPizza)
 //    }
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 7.2)
-const menu = [
+let menu = [
     { nome: "Margherita", ingredienti: "Pomodoro, mozzarella", prezzo: 7 },
     { nome: "Diavola", ingredienti: "Pomodoro, mozzarella, salame piccante", prezzo: 9 },
     { nome: "Tartufo", ingredienti: "Crema di tartufo, mozzarella, funghi", prezzo: 16 }
@@ -863,6 +863,22 @@ for (let pizza of menu) {
         '  <span class="dettagli-pizza"> | ' + pizza.ingredienti + ' | €' + pizza.prezzo + '</span>' +
         '</div>'
     listaPizze.appendChild(li)
+    //  ultimo punto dell'esercizio 
+       const btnRimuovi = document.createElement("button");
+   btnRimuovi.textContent = "❌";
+  btnRimuovi.classList.add("btn-danger");
+   btnRimuovi.addEventListener("click", function() {
+//       // 1. Trova l'indice della pizza nell'array
+       const indice = menu.indexOf(pizza);
+//       // 2. Rimuovila con splice
+      menu.splice(indice, 1);
+//       // 3. Rimuovi l'<li> dal DOM
+       li.remove();
+//       // 4. Aggiorna le statistiche
+       document.querySelector("#stat-totale").textContent = menu.length;
+   });
+  li.appendChild(btnRimuovi);
+
 }
 
 
@@ -917,16 +933,29 @@ aggiungi.addEventListener("click", () => {
         alert("Inserisci un nome!");
         return;
     }
-    let pizza = { nome: "Vegetariana", ingredienti: "pomodoro, mozzarella, zucchine, melanzane, peperoni", prezzo: 12.00, categoria: "Speciale" }
+    let pizza = { nome: nome, ingredienti: ingredienti, prezzo: prezzo, categoria: categoria }
     menu.push(pizza)
 
-        let li = document.createElement("li")
-        li.innerHTML = '<div class="info-pizza">' +
-            '  <span class="nome-pizza">' + nome + '</span>' +
-            '  <span class="dettagli-pizza"> | ' + ingredienti + ' | €' + prezzo + '</span>' +
-            '</div>'
-        listaPizze.appendChild(li)
-    
+    let li = document.createElement("li")
+    li.innerHTML = '<div class="info-pizza">' +
+        '  <span class="nome-pizza">' + pizza.nome + '</span>' +
+        '  <span class="dettagli-pizza"> | ' + pizza.ingredienti + ' | €' + pizza.prezzo + '</span>' +
+        '</div>'
+    listaPizze.appendChild(li)
+
+    //       --     ultimo punto dell'esercizio --
+  const btnRimuovi = document.createElement("button");
+ btnRimuovi.textContent = "❌";
+  btnRimuovi.classList.add("btn-danger");
+  btnRimuovi.addEventListener("click", function() {
+      const indice = menu.indexOf(pizza);
+       menu.splice(indice, 1);
+       li.remove();
+      document.querySelector("#stat-totale").textContent = menu.length;
+       });
+   li.appendChild(btnRimuovi);
+//          -- ultimo punto dell'esercizio fine --
+
     nome.value = ""
     ingredienti = ""
     prezzo = ""
@@ -1045,9 +1074,9 @@ console.log(descrizionePizza);
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 10.1)
 function pulisciNome(nome) {
-    let nomePulito = nome.trim()
-    nomePulito = nomePulito.charAt(0).toUpperCase()
-    return nomePulito = nomePulito.slice(1).toLowerCase()
+    let noSpazzi = nome.trim()
+    let nomePulito = noSpazzi.charAt(0).toUpperCase() + noSpazzi.slice(1).toLowerCase()
+    return nomePulito
 }
 console.log(pulisciNome("  mARGHERITA  "));   // → "Margherita"
 console.log(pulisciNome("diavola"));  // → "Diavola"
@@ -1086,22 +1115,31 @@ console.log(pulisciNome("diavola"));  // → "Diavola"
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 10.2)
 function calcolaStatistiche(menu) {
-    let ogg = {}
-    ogg.totale = menu.length
-    ogg.sommaPrezzi = 0
-    for (let prezzo of menu) {
-        return sommaPrezzi = + prezzo.prezzo
+    let ogg = {
+        totale: menu.length,
+        sommaPrezzi: 0,
+        media: 0,
+        piuCara: ""
     }
-    ogg.media = ((sommaPrezzi / totale).toFixed(2))
-    ogg.piuCara = 0
+
+    for (let prezzo of menu) {
+        ogg.sommaPrezzi += prezzo.prezzo
+    }
+    ogg.media = (ogg.sommaPrezzi / ogg.totale).toFixed(2)
+
+    let maxPrezzo = 0
     let nomePiuCara = "";
-    for (const pizza of menu) {
-        if (pizza.prezzo > ogg.piuCara) {
-            ogg.piuCara = pizza.prezzo;
+    for (let pizza of menu) {
+        if (pizza.prezzo > maxPrezzo) {
+            maxPrezzo = pizza.prezzo;
             nomePiuCara = pizza.nome;
         }
     }
+    ogg.piuCara = `${nomePiuCara} | ${maxPrezzo} €`
+
+    return ogg;
 }
+
 const stats = calcolaStatistiche(menu)
 console.log(`📊 Menu: ${stats.totale} pizze | Media: €${stats.media} | Più cara: ${stats.piuCara}`);
 let mediaS = document.querySelector("#stat-media")
@@ -1166,7 +1204,17 @@ console.log("Ultimo accesso:", ultimoAccesso); // → "25/02/2026"
 //    d. Stampa in console: "Salvate " + menu.length + " pizze"
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 11.1)
-
+let salva = document.querySelector("#btn-salva")
+salva.addEventListener("click", () => {
+    let stringaMenu = JSON.stringify(menu)
+    localStorage.setItem("menu-pizzeria", stringaMenu)
+    let mess = document.querySelector("#messaggio")
+    mess.textContent = "💾 Menu salvato!"
+    mess.classList.remove("msg-errore")
+    mess.classList.add("msg-successo")
+    mess.style.display = "block"
+    console.log("Salvate " + menu.length + " pizze")
+})
 
 
 // ✅ VERIFICA: Clicca "Salva" → appare il messaggio verde + log in console
@@ -1214,7 +1262,31 @@ console.log("Ultimo accesso:", ultimoAccesso); // → "25/02/2026"
 //       }
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 11.2)
+let carica = document.querySelector("#btn-carica")
+carica.addEventListener("click", () => {
+    const salvati = localStorage.getItem("menu-pizzeria")
+    if (salvati !== null) {
+          menu.length = 0; 
+          const datiCaricati = JSON.parse(salvati);
+          for (const pizza of datiCaricati) {
+              menu.push(pizza);
+           }
 
+          const lista = document.querySelector("#lista-pizze");
+          lista.innerHTML = "";
+           for (const pizza of menu) {
+              const li = document.createElement("li");
+              li.innerHTML = '<div class="info-pizza">' +
+                  '<span class="nome-pizza">' + pizza.nome + '</span>' +
+                  '<span class="dettagli-pizza"> | ' + pizza.ingredienti + ' | €' + pizza.prezzo + '</span>' +
+                  '</div>';
+               lista.appendChild(li);
+          }
+          document.querySelector("#stat-totale").textContent = menu.length;
+      } else {
+           alert("Nessun salvataggio trovato!");
+      }
+})
 
 
 // ✅ VERIFICA: Clicca "Salva", ricarica la pagina, clicca "Carica" → le pizze riappaiono!
@@ -1240,7 +1312,21 @@ console.log("Ultimo accesso:", ultimoAccesso); // → "25/02/2026"
 // - Mostra un messaggio di conferma
 
 // 👇 SCRIVI QUI IL TUO CODICE (Step 12.1)
-
+let reset = document.querySelector("#btn-reset")
+reset.addEventListener("click", () => {
+    menu.length = 0
+    let lista = document.querySelector("#lista-pizze");
+    lista.innerHTML = ""
+ document.querySelector("#stat-totale").textContent = 0
+ document.querySelector("#stat-media").textContent = 0
+ document.querySelector("#stat-piu-cara").textContent = 0
+    localStorage.removeItem("menu-pizzeria")
+   let mess = document.querySelector("#messaggio")
+    mess.textContent = "💾 Menu resettato!"
+    mess.classList.remove("msg-errore")
+    mess.classList.add("msg-successo")
+    mess.style.display = "block" 
+})
 
 
 // ─────────────────────────────────────────────────────────

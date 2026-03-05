@@ -27,6 +27,16 @@
 // 💡 HINT: const per cose che non cambiano, let per cose che cambieranno.
 
 // 👇 SCRIVI QUI IL TUO CODICE
+const nomeApp = "La Mia Rubrica"
+const versione = 1.0
+const maxContatti = 50
+let contattiRegistrati = 0
+let appAttiva = true
+console.log(nomeApp + typeof nomeApp)
+console.log(versione + typeof versione)
+console.log(maxContatti + typeof maxContatti)
+console.log(contattiRegistrati + typeof contattiRegistrati)
+console.log(appAttiva + typeof appAttiva)
 
 
 
@@ -47,6 +57,18 @@
 // 💡 HINT: Usa ===, !==, &&, ||, ! come nell'esercizio 1 Capitolo 2.
 
 // 👇 SCRIVI QUI IL TUO CODICE
+let postiLiberi = maxContatti - contattiRegistrati
+let percentualeUso = (contattiRegistrati / maxContatti) * 100
+let haPosti = postiLiberi > 0
+let èNuova = contattiRegistrati === 0
+let puòAccettare = haPosti && appAttiva
+let èPiena = !haPosti
+console.log(postiLiberi)
+console.log(percentualeUso)
+console.log(haPosti)
+console.log(èNuova)
+console.log(puòAccettare)
+console.log(èPiena)
 
 
 
@@ -70,8 +92,21 @@
 //    - default    → "❓"
 
 // 👇 SCRIVI QUI IL TUO CODICE
-
-
+let numero = "+39 333 1234567"
+if (stringa.startsWith("+39")){
+    console.log("📱 Numero italiano")
+} else if 
+ switch (categoria) {
+    case "Famiglia" : console.log("👨‍👩‍👧");
+    break;
+    case "Lavoro" : console.log("💼");
+    break;
+    case "Amici" : console.log("🎉");
+    break;
+    case "Altro" : console.log("📌");
+    break;
+    default : console.log("V")
+ }
 
 // ============================================================================
 // CAPITOLO 4 — CICLI
